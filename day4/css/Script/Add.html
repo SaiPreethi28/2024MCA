@@ -1,0 +1,52 @@
+<!doctype html><html>  <head>  <script>
+function add( )
+{
+var num1, num2, sum;
+num1=parseInt(document.getElementById("txtFirstNumber").value);
+num2=parseInt(document.getElementById("txtSecondNumber").value);
+sum=num1+num2;
+document.getElementById("txtAnswer").value=sum;
+}
+function subt( )
+{
+var num1, num2, subt;
+num1=parseInt(document.getElementById("txtFirstNumber").value);
+num2=parseInt(document.getElementById("txtSecondNumber").value);
+subt=num1-num2;
+document.getElementById("txtAnswer").value=subt;
+}
+function mul( )
+{
+var num1, num2,mul;
+num1=parseInt(document.getElementById("txtFirstNumber").value);
+num2=parseInt(document.getElementById("txtSecondNumber").value);
+mul=num1*num2;
+document.getElementById("txtAnswer").value=mul;
+}
+function div( )
+{
+var num1, num2, div;
+num1=parseInt(document.getElementById("txtFirstNumber").value);
+num2=parseInt(document.getElementById("txtSecondNumber").value);
+div=num1/num2;
+document.getElementById("txtAnswer").value=div;
+}
+function clean( )
+{
+document.getElementById("txtFirstNumber").value=0;
+document.getElementById("txtSecondNumber").value="";
+document.getElementById("txtAnswer").value="";
+}
+</script> </head>
+<body>
+<p>First Number:<input id="txtFirstNumber"></p>
+<p>Second Number:<input id="txtSecondNumber"></p>
+<button onclick="add( )">Add Them</button>
+<button onclick="subt( )">Subtract Them</button>
+<button onclick="mul( )">Multiply Them</button>
+<button onclick="div( )">Divide Them</button>
+<button onclick="clean( )">Reset</button>
+<p>Sum=<input id="txtAnswer"></p>
+
+</body> </html>
+
