@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Cascading Dropdown Example</title>
+</head>
+<body>
+    <h1>Cascading Dropdown</h1>
+
+    <form id="form">
+        <!-- Department -->
+        <br><div class="form-control">
+            <label for="department">Department</label>
+            <select name="department" id="department" onchange="updateCourses()">
+                <option value="">Select Department</option>
+                <option value="BSCs">BSCs</option>
+                <option value="B.Com">B.Com</option>
+                <option value="MCA">MCA</option>
+                <option value="MBA">MBA</option>
+            </select>
+        </div>
+
+        <!-- Course -->
+        <br><div class="form-control">
+            <label for="course">Course</label>
+            <select name="course" id="course" onchange="updateFaculty()">
+                <option value="">Select Course</option>
+            </select>
+        </div>
+
+        <!-- Faculty -->
+        <br><div class="form-control">
+            <label for="faculty">Faculty</label>
+            <select name="faculty" id="faculty">
+                <option value="">Select Faculty</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <br><button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const courseOptions = {
+            BSCs: ["PHP", "CRT", "Mathematics", "Computer Science"],
+            "B.Com": ["Accounting", "Finance", "Taxation"],
+            MCA: ["Java", "Python", "Web Development"],
+            MBA: ["HR", "Marketing", "Finance", "Operations"]
+        };
+
+        const facultyOptions = {
+            "PHP": ["Chandra Sekhar"],
+            "CRT": ["Prakash"],
+            "Mathematics": ["Mayuri"],
+            "Computer Science": ["Chandra Sekhar", "Rani"],
+            "Accounting": ["Swetha"],
+            "Finance": ["Thejaswini"],
+            "Taxation": ["Anandh"],
+            "Java": ["Hasya"],
+            "Python": ["praveen"],
+            "Web Development": ["Chandra Sekhar"],
+            "HR": ["Akhila"],
+            "Marketing": ["Prabhakar"],
+            "Operations": ["Chandra Sekhar"],
+        };
+
+        function updateCourses() {
+            const departmentSelect = document.getElementById("department");
+            const courseSelect = document.getElementById("course");
+            const facultySelect = document.getElementById("faculty");
+
+            const selectedDept = departmentSelect.value;
+
+            // Reset course and faculty
+            courseSelect.innerHTML = '<option value="">Select Course</option>';
+            facultySelect.innerHTML = '<option value="">Select Faculty</option>';
+
+            if (courseOptions[selectedDept]) {
+                courseOptions[selectedDept].forEach(course => {
+                    const option = document.createElement("option");
+                    option.value = course;
+                    option.textContent = course;
+                    courseSelect.appendChild(option);
+                });
+            }
+        }
+
+        function updateFaculty() {
+            const courseSelect = document.getElementById("course");
+            const facultySelect = document.getElementById("faculty");
+            const selectedCourse = courseSelect.value;
+
+            // Reset faculty
+            facultySelect.innerHTML = '<option value="">Select Faculty</option>';
+
+            if (facultyOptions[selectedCourse]) {
+                facultyOptions[selectedCourse].forEach(faculty => {
+                    const option = document.createElement("option");
+                    option.value = faculty;
+                    option.textContent = faculty;
+                    facultySelect.appendChild(option);
+                });
+            }
+            
+        }
+       document.getElementById("form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from reloading the page
+
+            const department = document.getElementById("department").value;
+            const course = document.getElementById("course").value;
+            const faculty = document.getElementById("faculty").value;
+
+            if (!department || !course || !faculty) {
+                alert("Please select the data");
+                return;
+            }
+
+            alert(
+                "Form Submitted!\n\n" +
+                "Department: " + department + "\n" +
+                "Course: " + course + "\n" +
+                "Faculty: " + faculty
+            );
+        }); 
+    </script>
+</body>
+</html>
+
