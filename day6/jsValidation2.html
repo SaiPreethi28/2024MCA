@@ -1,0 +1,17 @@
+<html><head><script>
+function myFunction (){
+let x=document.getElementById("numb").value;
+if(isNaN(x)||x<10000000000||x>9999999999){
+text="Input not valid";
+}else{
+text="Input OK";
+}
+document.getElementById("demo").innerHTML=text;
+}
+</script></head><body>
+<h2>JavaScript Validation</h2>
+<p>Please input a valid mobile number :</p>
+<input id="numb">
+<button type="button" onclick="myFunction()">Submit</button>
+<p id="demo"></p>
+</body></html>
