@@ -1,0 +1,25 @@
+<head>
+<title>Canteen List</title>
+
+    <h1 style="text-align: center;">Mother Teresa Canteen</h1>
+
+     <body bgcolor=skyblue>
+</body>
+    <style>
+        img { max-width: 150px; height=150px; }
+        .product { border: 1px solid #ccc; padding: 10px; margin: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>Meals</h1>
+    {% for meal in meals %}
+        <div class="meal">
+            {% if meal.image %}
+                <img src="{{ meal.image.url }}" alt="{{ meal.name }}">
+            {% endif %}
+            <h2><a href="{% url 'meal_detail' meal.pk %}">{{ meal.name }}</a></h2>
+            <p>Rs.{{meal.price }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{meal.name }}</title>
+</head>
+<body>
+    <h1>{{ meal.name }}</h1>
+    {% if meal.image %}
+        <img src="{{ meal.image.url }}" alt="{{meal.name }}">
+    {% endif %}
+    <p>{{ meal.description }}</p>
+    <p>Price: Rs{{meal.price }}</p>
+    <a href="/">Back to Meals</a>
+</body>
+</html>
