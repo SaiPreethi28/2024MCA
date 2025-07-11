@@ -1,21 +1,8 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-.container{
-display:inline-grid;
-grid-template-columns:auto auto auto;
-background-color:dodgerblue;
-padding:10px;
-}
-.container>div{
-background-color:#f1f1f1;
-border:1px solid black;
-padding:10px;
-font-size:30px;
-text-align:center;
-}
-</style>
+<link rel="stylesheet" href="{% static 'css/test1.css' %}">
 </head>
 <body>
 <h1>Grid Layout</h1>
@@ -33,6 +20,6 @@ text-align:center;
   <div>7</div>
   <div>8</div>
 </div>
-
+<img src="{ % static 'img/logo.png'%}">
 </body>
 </html>
