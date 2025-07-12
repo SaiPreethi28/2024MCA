@@ -1,16 +1,11 @@
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader
+from django.shortcuts import render
 # Create your views here.
+#def green(request):
+    #stu=[{'name':'shiva','marks':90},{'name':'navmohan','marks':85},
+         {'name':'shravani','marks':88},{'name':'salma','marks':91}]
 
-from .models import EmployeeModel  
-from .forms import EmployeeForm
-#display & save form data   
-def insert_employee(request):
-    context ={}# dictionary for initial data with field names as keys
-    ob_form = EmployeeForm(request.POST or None)
-    if ob_form.is_valid():
-        ob_form.save()
-        return HttpResponse("Data Saved")
-    context['form']= ob_form
-    return render(request, "insert_employee.html", context)  
+    #return render(request,'green.html',{'data': stu})
+  
 
