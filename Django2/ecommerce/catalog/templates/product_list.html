@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Catalog</title>
+    <style>
+         h1{
+          background-color:pink;
+          color:red;
+          font-size:50;
+         padding:10px;
+         margin:0px;
+         }
+         footer{
+          Background-color:orange;
+          font-size:30px;
+        }
+       ul{
+            list-style-type: none;
+            
+          }
+         ul li a{
+               display:block;
+               text-decoration: none;
+          }
+         ul li{
+           float:left;
+            padding:0px;
+            width:180px;
+            height:50px;
+            font-size:20px;
+            text-align:center;
+            line-height:50px;
+            background-color:aqua
+            
+       }
+      *{
+            margin:0px;
+            padding:0px;
+          }
+        img { max-height:100px;  }
+        .product { border: 1px solid #ccc; padding: 10px; margin: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+<header><h1>Mother Theresa Institutes Of Computers<h1>
+
+</header>
+<ul>
+<li><a href=Home>Home</a></li>
+<li><a href=products>Products</a></li>
+<li><a href=cart>Cart</a></li>
+<li><a href=order>Order History</a></li>
+<li><a href=login>Login</a></li>
+<li><a href=signup>Signup</a></li>
+</ul>
+<br><p></p>
+<h2>Products</h2>
+ <form method="get">
+    <input type="text" name="q" placeholder="Search..." value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+</form>
+<ul>    
+    {% for category in categories %}
+        <li><a href="?category={{ category.id }}">{{ category.name }}</a></li>
+    {% endfor %}
+</ul>
+    {% for product in products %}
+        <div class="product">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% endif %}
+            <h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
+            <p>{{ product.price }}</p>
+   
+
+{% if request.GET.category %}
+    <input type="hidden" name="category" value="{{ request.GET.category }}">
+{% endif %}
+
+        </div>
+    {% endfor %}
+<button onclick="window.print()" class="no-print">print this page</button>
+<footer> This Is Created By Reddy Teja.</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
